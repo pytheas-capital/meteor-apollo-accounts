@@ -1,12 +1,12 @@
-import { getLoginToken, resetStore } from './store'
-import gql from 'graphql-tag'
+import { getLoginToken, resetStore } from "./store";
+import gql from "graphql-tag";
 
 export default async function (apollo, history) {
-  const token = await getLoginToken()
+  const token = await getLoginToken();
 
   if (!token) {
-    history.push('/login')
-    return
+    history.push("/login");
+    return;
   }
 
   await apollo.mutate({
@@ -19,9 +19,9 @@ export default async function (apollo, history) {
       }
     `,
     variables: {
-      token
-    }
-  })
-  await resetStore() // move this line afret apollo.mutate
-  await apollo.resetStore()
+      token,
+    },
+  });
+  await resetStore(); // move this line after apollo.mutate
+  await apollo.resetStore();
 }
