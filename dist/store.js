@@ -1,21 +1,27 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.resetStore = exports.onTokenChange = exports.getUserId = exports.getLoginToken = exports.storeLoginToken = exports.setTokenStore = undefined;
 
-var _regenerator = require('babel-runtime/regenerator');
+var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var onChangeCallbacks = [];
+
+var LOGIN_TOKEN_KEY = "Meteor.loginToken";
+var LOGIN_TOKEN_EXPIRES_KEY = "Meteor.loginTokenExpires";
+var USER_ID_KEY = "Meteor.userId";
+
+var LOCAL_STORAGE_KEYS = [LOGIN_TOKEN_KEY, LOGIN_TOKEN_EXPIRES_KEY, USER_ID_KEY];
 
 var tokenStore = {
   set: function () {
@@ -27,12 +33,12 @@ var tokenStore = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              global.localStorage['Meteor.userId'] = userId;
-              global.localStorage['Meteor.loginToken'] = token;
-              global.localStorage['Meteor.loginTokenExpires'] = tokenExpires.toString();
+              global.localStorage["Meteor.userId"] = userId;
+              global.localStorage["Meteor.loginToken"] = token;
+              global.localStorage["Meteor.loginTokenExpires"] = tokenExpires.toString();
 
             case 3:
-            case 'end':
+            case "end":
               return _context.stop();
           }
         }
@@ -51,14 +57,14 @@ var tokenStore = {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              return _context2.abrupt('return', {
-                userId: global.localStorage['Meteor.userId'],
-                token: global.localStorage['Meteor.loginToken'],
-                tokenExpires: global.localStorage['Meteor.loginTokenExpires']
+              return _context2.abrupt("return", {
+                userId: global.localStorage["Meteor.userId"],
+                token: global.localStorage["Meteor.loginToken"],
+                tokenExpires: global.localStorage["Meteor.loginTokenExpires"]
               });
 
             case 1:
-            case 'end':
+            case "end":
               return _context2.stop();
           }
         }
@@ -91,7 +97,7 @@ var storeLoginToken = exports.storeLoginToken = function () {
             return tokenDidChange();
 
           case 4:
-          case 'end':
+          case "end":
             return _context3.stop();
         }
       }
@@ -117,10 +123,10 @@ var getLoginToken = exports.getLoginToken = function () {
           case 2:
             _ref6 = _context4.sent;
             token = _ref6.token;
-            return _context4.abrupt('return', token);
+            return _context4.abrupt("return", token);
 
           case 5:
-          case 'end':
+          case "end":
             return _context4.stop();
         }
       }
@@ -146,10 +152,10 @@ var getUserId = exports.getUserId = function () {
           case 2:
             _ref8 = _context5.sent;
             userId = _ref8.userId;
-            return _context5.abrupt('return', userId);
+            return _context5.abrupt("return", userId);
 
           case 5:
-          case 'end':
+          case "end":
             return _context5.stop();
         }
       }
@@ -189,7 +195,7 @@ var tokenDidChange = function () {
 
           case 10:
             _context6.prev = 10;
-            _context6.t0 = _context6['catch'](6);
+            _context6.t0 = _context6["catch"](6);
             _didIteratorError = true;
             _iteratorError = _context6.t0;
 
@@ -218,7 +224,7 @@ var tokenDidChange = function () {
             return _context6.finish(14);
 
           case 22:
-          case 'end':
+          case "end":
             return _context6.stop();
         }
       }
@@ -240,11 +246,12 @@ var resetStore = exports.resetStore = function () {
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
-            _context7.next = 2;
-            return storeLoginToken('', '', '');
+            clearMeteorOldTokens();
+            _context7.next = 3;
+            return storeLoginToken("", "", "");
 
-          case 2:
-          case 'end':
+          case 3:
+          case "end":
             return _context7.stop();
         }
       }
@@ -255,3 +262,12 @@ var resetStore = exports.resetStore = function () {
     return _ref10.apply(this, arguments);
   };
 }();
+
+var clearMeteorOldTokens = function clearMeteorOldTokens() {
+  if (!global.localStorage) {
+    return;
+  }
+  LOCAL_STORAGE_KEYS.forEach(function (key) {
+    return global.localStorage.removeItem(key);
+  });
+};

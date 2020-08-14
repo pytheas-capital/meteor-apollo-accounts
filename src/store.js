@@ -64,8 +64,5 @@ const clearMeteorOldTokens = () => {
   if (!global.localStorage) {
     return;
   }
-  LOCAL_STORAGE_KEYS.forEach(key =>
-  {
-    global.localStorage.removeItem(key);
-  }
+  LOCAL_STORAGE_KEYS.forEach((key) => global.localStorage.removeItem(key));
 };
