@@ -1,6 +1,6 @@
 {
   "name": "meteor-apollo-accounts",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Meteor accounts in GraphQL",
   "main": "./dist",
   "repository": {
