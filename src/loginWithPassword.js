@@ -10,6 +10,7 @@ export default async function ({ username, email, password }, apollo) {
         id
         token
         tokenExpires
+        message
       }
     }
     `,

@@ -16,7 +16,7 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _templateObject = (0, _taggedTemplateLiteral3.default)(['\n    mutation login ($username: String, $email: String, $password: HashedPassword!) {\n      loginWithPassword (username: $username, email: $email, password: $password) {\n        id\n        token\n        tokenExpires\n      }\n    }\n    '], ['\n    mutation login ($username: String, $email: String, $password: HashedPassword!) {\n      loginWithPassword (username: $username, email: $email, password: $password) {\n        id\n        token\n        tokenExpires\n      }\n    }\n    ']);
+var _templateObject = (0, _taggedTemplateLiteral3.default)(['\n    mutation login ($username: String, $email: String, $password: HashedPassword!) {\n      loginWithPassword (username: $username, email: $email, password: $password) {\n        id\n        token\n        tokenExpires\n        message\n      }\n    }\n    '], ['\n    mutation login ($username: String, $email: String, $password: HashedPassword!) {\n      loginWithPassword (username: $username, email: $email, password: $password) {\n        id\n        token\n        tokenExpires\n        message\n      }\n    }\n    ']);
 
 var _hashPassword = require('./hashPassword');
 
