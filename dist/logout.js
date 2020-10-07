@@ -1,26 +1,26 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('babel-runtime/regenerator');
+var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _taggedTemplateLiteral2 = require('babel-runtime/helpers/taggedTemplateLiteral');
+var _taggedTemplateLiteral2 = require("babel-runtime/helpers/taggedTemplateLiteral");
 
 var _taggedTemplateLiteral3 = _interopRequireDefault(_taggedTemplateLiteral2);
 
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _templateObject = (0, _taggedTemplateLiteral3.default)(['\n      mutation logout($token: String!) {\n        logout(token: $token) {\n          success\n        }\n      }\n    '], ['\n      mutation logout($token: String!) {\n        logout(token: $token) {\n          success\n        }\n      }\n    ']);
+var _templateObject = (0, _taggedTemplateLiteral3.default)(["\n      mutation logout($token: String!) {\n        logout(token: $token) {\n          success\n        }\n      }\n    "], ["\n      mutation logout($token: String!) {\n        logout(token: $token) {\n          success\n        }\n      }\n    "]);
 
-var _store = require('./store');
+var _store = require("./store");
 
-var _graphqlTag = require('graphql-tag');
+var _graphqlTag = require("graphql-tag");
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
@@ -44,8 +44,8 @@ exports.default = function () {
               break;
             }
 
-            history.push('/login');
-            return _context.abrupt('return');
+            history.push("/login");
+            return _context.abrupt("return");
 
           case 6:
             _context.next = 8;
@@ -66,7 +66,7 @@ exports.default = function () {
             return apollo.resetStore();
 
           case 12:
-          case 'end':
+          case "end":
             return _context.stop();
         }
       }
