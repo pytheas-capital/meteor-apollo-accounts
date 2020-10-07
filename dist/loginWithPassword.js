@@ -16,7 +16,7 @@ var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _templateObject = (0, _taggedTemplateLiteral3.default)(["\n      mutation login(\n        $username: String\n        $email: String\n        $password: HashedPassword!\n        $twoFactorToken: String\n      ) {\n        loginWithPassword(\n          username: $username\n          email: $email\n          password: $password\n          twoFactorToken: $twoFactorToken\n        ) {\n          id\n          token\n          tokenExpires\n        }\n      }\n    "], ["\n      mutation login(\n        $username: String\n        $email: String\n        $password: HashedPassword!\n        $twoFactorToken: String\n      ) {\n        loginWithPassword(\n          username: $username\n          email: $email\n          password: $password\n          twoFactorToken: $twoFactorToken\n        ) {\n          id\n          token\n          tokenExpires\n        }\n      }\n    "]);
+var _templateObject = (0, _taggedTemplateLiteral3.default)(["\n      mutation login(\n        $username: String\n        $email: String\n        $password: HashedPassword!\n        $twoFactorToken: String\n      ) {\n        loginWithPassword(\n          username: $username\n          email: $email\n          password: $password\n          twoFactorToken: $twoFactorToken\n        ) {\n          id\n          token\n          tokenExpires\n          message\n        }\n      }\n    "], ["\n      mutation login(\n        $username: String\n        $email: String\n        $password: HashedPassword!\n        $twoFactorToken: String\n      ) {\n        loginWithPassword(\n          username: $username\n          email: $email\n          password: $password\n          twoFactorToken: $twoFactorToken\n        ) {\n          id\n          token\n          tokenExpires\n          message\n        }\n      }\n    "]);
 
 var _hashPassword = require("./hashPassword");
 
@@ -37,7 +37,7 @@ exports.default = function () {
         password = _ref2.password,
         twoFactorToken = _ref2.twoFactorToken;
 
-    var result, _result$data$loginWit, id, token, tokenExpires;
+    var result, _result$data$loginWit, id, token, tokenExpires, message;
 
     return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
@@ -56,12 +56,12 @@ exports.default = function () {
 
           case 2:
             result = _context.sent;
-            _result$data$loginWit = result.data.loginWithPassword, id = _result$data$loginWit.id, token = _result$data$loginWit.token, tokenExpires = _result$data$loginWit.tokenExpires;
+            _result$data$loginWit = result.data.loginWithPassword, id = _result$data$loginWit.id, token = _result$data$loginWit.token, tokenExpires = _result$data$loginWit.tokenExpires, message = _result$data$loginWit.message;
             _context.next = 6;
             return (0, _store.storeLoginToken)(id, token, new Date(tokenExpires));
 
           case 6:
-            return _context.abrupt("return", id);
+            return _context.abrupt("return", { id: id, message: message });
 
           case 7:
           case "end":

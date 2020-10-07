@@ -23,6 +23,7 @@ export default async function(
           id
           token
           tokenExpires
+          message
         }
       }
     `,
@@ -34,7 +35,7 @@ export default async function(
     }
   });
 
-  const { id, token, tokenExpires } = result.data.loginWithPassword;
+  const { id, token, tokenExpires, message } = result.data.loginWithPassword;
   await storeLoginToken(id, token, new Date(tokenExpires));
-  return id;
+  return { id, message };
 }
