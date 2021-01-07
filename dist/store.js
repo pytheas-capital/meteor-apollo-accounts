@@ -17,9 +17,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var onChangeCallbacks = [];
 
-var LOGIN_TOKEN_KEY = "Meteor.loginToken";
-var LOGIN_TOKEN_EXPIRES_KEY = "Meteor.loginTokenExpires";
-var USER_ID_KEY = "Meteor.userId";
+var LOGIN_TOKEN_KEY = "authToken";
+var LOGIN_TOKEN_EXPIRES_KEY = "authTokenExpires";
+var USER_ID_KEY = "userId";
 
 var LOCAL_STORAGE_KEYS = [LOGIN_TOKEN_KEY, LOGIN_TOKEN_EXPIRES_KEY, USER_ID_KEY];
 
@@ -33,9 +33,9 @@ var tokenStore = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              global.localStorage["Meteor.userId"] = userId;
-              global.localStorage["Meteor.loginToken"] = token;
-              global.localStorage["Meteor.loginTokenExpires"] = tokenExpires.toString();
+              global.localStorage["userId"] = userId;
+              global.localStorage["authToken"] = token;
+              global.localStorage["authTokenExpires"] = tokenExpires.toString();
 
             case 3:
             case "end":
@@ -58,9 +58,9 @@ var tokenStore = {
           switch (_context2.prev = _context2.next) {
             case 0:
               return _context2.abrupt("return", {
-                userId: global.localStorage["Meteor.userId"],
-                token: global.localStorage["Meteor.loginToken"],
-                tokenExpires: global.localStorage["Meteor.loginTokenExpires"]
+                userId: global.localStorage["userId"],
+                token: global.localStorage["authToken"],
+                tokenExpires: global.localStorage["authTokenExpires"]
               });
 
             case 1:

@@ -1,8 +1,8 @@
 const onChangeCallbacks = [];
 
-const LOGIN_TOKEN_KEY = "Meteor.loginToken";
-const LOGIN_TOKEN_EXPIRES_KEY = "Meteor.loginTokenExpires";
-const USER_ID_KEY = "Meteor.userId";
+const LOGIN_TOKEN_KEY = "authToken";
+const LOGIN_TOKEN_EXPIRES_KEY = "authTokenExpires";
+const USER_ID_KEY = "userId";
 
 const LOCAL_STORAGE_KEYS = [
   LOGIN_TOKEN_KEY,
@@ -12,15 +12,15 @@ const LOCAL_STORAGE_KEYS = [
 
 let tokenStore = {
   set: async function ({ userId, token, tokenExpires }) {
-    global.localStorage["Meteor.userId"] = userId;
-    global.localStorage["Meteor.loginToken"] = token;
-    global.localStorage["Meteor.loginTokenExpires"] = tokenExpires.toString();
+    global.localStorage["userId"] = userId;
+    global.localStorage["authToken"] = token;
+    global.localStorage["authTokenExpires"] = tokenExpires.toString();
   },
   get: async function () {
     return {
-      userId: global.localStorage["Meteor.userId"],
-      token: global.localStorage["Meteor.loginToken"],
-      tokenExpires: global.localStorage["Meteor.loginTokenExpires"],
+      userId: global.localStorage["userId"],
+      token: global.localStorage["authToken"],
+      tokenExpires: global.localStorage["authTokenExpires"],
     };
   },
 };

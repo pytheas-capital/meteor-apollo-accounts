@@ -29,7 +29,7 @@ initAccounts({
   loginWithFacebook: false,
   loginWithGoogle: false,
   loginWithLinkedIn: false,
-  loginWithPassword: true
+  loginWithPassword: true,
 });
 
 // Load all your resolvers and type definitions into graphql-loader
@@ -210,7 +210,7 @@ Register a function to be called when a user is logged in or out.
 ```js
 import { onTokenChange } from "meteor-apollo-accounts";
 
-onTokenChange(function() {
+onTokenChange(function () {
   console.log("token did change");
   apollo.resetStore();
 });
@@ -247,16 +247,16 @@ import { loginWithPassword, userId, setTokenStore} from 'meteor-apollo-accounts'
 // (for instance when your component is mounted):
 setTokenStore({
   set: async function ({userId, token, tokenExpires}) {
-    await AsyncStorage.setItem('Meteor.userId', userId)
-    await AsyncStorage.setItem('Meteor.loginToken', token)
+    await AsyncStorage.setItem('userId', userId)
+    await AsyncStorage.setItem('authToken', token)
     // AsyncStorage doesn't support Date type so we'll store it as a String
-    await AsyncStorage.setItem('Meteor.loginTokenExpires', tokenExpires.toString())
+    await AsyncStorage.setItem('authTokenExpires', tokenExpires.toString())
   },
   get: async function () {
     return {
-      userId: await AsyncStorage.getItem('Meteor.userId'),
-      token: await AsyncStorage.getItem('Meteor.loginToken'),
-      tokenExpires: await AsyncStorage.getItem('Meteor.loginTokenExpires')
+      userId: await AsyncStorage.getItem('userId'),
+      token: await AsyncStorage.getItem('authToken'),
+      tokenExpires: await AsyncStorage.getItem('authTokenExpires')
     }
   }
 })
